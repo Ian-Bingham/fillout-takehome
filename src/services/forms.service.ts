@@ -34,9 +34,7 @@ export const getFilteredResponses = async ({
 	return {
 		responses: filteredResponses,
 		totalResponses: filteredResponses.length,
-		pageCount: query.limit
-			? Math.ceil(filteredResponses.length / query.limit)
-			: 1,
+		pageCount: Math.ceil(filteredResponses.length / (query.limit || 1)),
 	};
 };
 
