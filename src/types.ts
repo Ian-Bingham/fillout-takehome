@@ -3,7 +3,7 @@ interface BaseFormQuestion {
 	value: number | string;
 }
 
-interface FormQuestion extends BaseFormQuestion {
+export interface FormQuestion extends BaseFormQuestion {
 	name: string;
 	type: string;
 }
@@ -21,8 +21,14 @@ export interface FilloutFormSubmission {
 	pageCount: number;
 }
 
+export type FilterConditions =
+	| "equals"
+	| "does_not_equal"
+	| "greater_than"
+	| "less_than";
+
 export interface Filter extends BaseFormQuestion {
-	condition: "equals" | "does_not_equal" | "greater_than" | "less_than";
+	condition: FilterConditions;
 }
 
 export interface FilterMap {

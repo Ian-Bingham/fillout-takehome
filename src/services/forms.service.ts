@@ -6,6 +6,7 @@ import {
 	FilloutFormSubmission,
 	QueryParams,
 } from "../types";
+import { compareValues, getComparableValue } from "../utils/compare.utils";
 
 export const getFilteredResponses = async ({
 	formId,
@@ -20,15 +21,13 @@ export const getFilteredResponses = async ({
 		return data;
 	}
 
-	const { responses }: { responses: FormResponse[] } = data;
-
 	const filters = JSON.parse(query.filters as string) as Filter[];
 	const filtersMap = filters.reduce((acc: FilterMap, curr) => {
 		acc[curr.id] = curr;
 		return acc;
 	}, {});
 
-	const filteredResponses = responses.filter((response) =>
+	const filteredResponses = data.responses.filter((response) =>
 		filterResponses({ response, filtersMap })
 	);
 
@@ -55,42 +54,17 @@ const filterResponses = ({
 			continue;
 		}
 
-		switch (filter.condition) {
-			case "equals": {
-				if (question.value !== filter.value) {
-					return false;
-				}
+		const questionValue = getComparableValue(question.value);
+		const filterValue = getComparableValue(filter.value);
 
-				break;
-			}
+		const comparison = compareValues({
+			value1: questionValue,
+			value2: filterValue,
+			operation: filter.condition,
+		});
 
-			case "does_not_equal": {
-				if (question.value === filter.value) {
-					return false;
-				}
-
-				break;
-			}
-
-			case "greater_than": {
-				if (question.value <= filter.value) {
-					return false;
-				}
-
-				break;
-			}
-
-			case "less_than": {
-				if (question.value >= filter.value) {
-					return false;
-				}
-
-				break;
-			}
-
-			default: {
-				break;
-			}
+		if (!comparison) {
+			return false;
 		}
 	}
 
