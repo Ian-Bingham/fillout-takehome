@@ -45,6 +45,16 @@ export const filterResponses = ({
 	response: FormResponse;
 	filtersMap: FilterMap;
 }): boolean => {
+	const questionIds = response.questions.map((question) => question.id);
+	const filterIds = Object.keys(filtersMap);
+	const hasValidFilterId = filterIds.some((filterId) =>
+		questionIds.includes(filterId)
+	);
+
+	if (!hasValidFilterId) {
+		return false;
+	}
+
 	for (const question of response.questions) {
 		const filter = filtersMap[question.id];
 
