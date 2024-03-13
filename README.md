@@ -28,6 +28,12 @@ Start the development server:
 $ npm run dev
 ```
 
+Run unit tests:
+
+```console
+$ npm run test
+```
+
 ### Design Decisions
 
 There were a few scenarios/requirements that were unclear to me so I made a few assumptions about the desired behavior which I've listed below:
