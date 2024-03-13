@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import * as FormRoutes from "./src/routes/forms.routes";
+import * as FormRoutes from "./routes/forms.routes";
 
 require("dotenv").config();
 
