@@ -1,6 +1,6 @@
 # Fillout Takehome Assessment
 
-This project is my submission for the takehome assessment for the Senior Full Stack Engineer role at Fillout. The main technologies used are ExpressJS and TypeScript. This was a fun project to work on and I hope that I will be able to develop on Fillout's products.
+This project is my submission for the takehome assessment for the Senior Full Stack Engineer role at Fillout. The main technologies used are ExpressJS and TypeScript. This was a fun project to work on and I hope that I will be able to develop on Fillout's products in the near future.
 
 ## Table of Contents
 
