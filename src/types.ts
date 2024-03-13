@@ -15,11 +15,13 @@ export interface FormResponse {
 	[key: string]: any;
 }
 
-export interface FilloutFormSubmission {
+export interface FilloutFormResponses {
 	responses: FormResponse[];
 	totalResponses: number;
 	pageCount: number;
 }
+
+export interface FilteredFormResponses extends FilloutFormResponses {}
 
 export type FilterConditions =
 	| "equals"

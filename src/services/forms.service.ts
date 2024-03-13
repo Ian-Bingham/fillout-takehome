@@ -3,7 +3,7 @@ import {
 	Filter,
 	FilterMap,
 	FormResponse,
-	FilloutFormSubmission,
+	FilteredFormResponses,
 	QueryParams,
 } from "../types";
 import { compareValues, getComparableValue } from "../utils/compare.utils";
@@ -14,8 +14,8 @@ export const getFilteredResponses = async ({
 }: {
 	formId: string;
 	query: QueryParams;
-}): Promise<FilloutFormSubmission> => {
-	const data = await FilloutClient.getSubmissions({ formId, query });
+}): Promise<FilteredFormResponses> => {
+	const data = await FilloutClient.getFormResponses({ formId, query });
 
 	if (!query.filters) {
 		return data;

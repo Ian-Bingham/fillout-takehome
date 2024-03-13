@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import {
-	FilloutFormSubmission,
+	FilloutFormResponses,
 	FilloutQueryParams,
 	QueryParams,
 } from "../types";
@@ -11,13 +11,13 @@ const axiosInstance = axios.create({
 
 const FORMS_ENDPOINT = "/v1/api/forms";
 
-export const getSubmissions = async ({
+export const getFormResponses = async ({
 	formId,
 	query,
 }: {
 	formId: string;
 	query: QueryParams;
-}): Promise<FilloutFormSubmission> => {
+}): Promise<FilloutFormResponses> => {
 	const filloutQueryParams: FilloutQueryParams = {
 		limit: query.limit,
 		afterDate: query.afterDate,
@@ -28,11 +28,13 @@ export const getSubmissions = async ({
 		sort: query.sort,
 	};
 
-	const response: AxiosResponse<FilloutFormSubmission> =
-		await axiosInstance.get(`${FORMS_ENDPOINT}/${formId}/submissions`, {
+	const response: AxiosResponse<FilloutFormResponses> = await axiosInstance.get(
+		`${FORMS_ENDPOINT}/${formId}/submissions`,
+		{
 			headers: { Authorization: `Bearer ${process.env.FILLOUT_API_KEY}` },
 			params: filloutQueryParams,
-		});
+		}
+	);
 
 	return response.data;
 };
