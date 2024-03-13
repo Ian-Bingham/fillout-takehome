@@ -14,7 +14,7 @@ describe("forms.service", () => {
 					{
 						questions: [
 							{
-								id: 1,
+								id: "id1",
 								name: "name",
 								type: "type",
 								value: "foo",
@@ -39,7 +39,7 @@ describe("forms.service", () => {
 					{
 						questions: [
 							{
-								id: 1,
+								id: "id1",
 								name: "name",
 								type: "type",
 								value: "foo",
@@ -49,7 +49,7 @@ describe("forms.service", () => {
 					{
 						questions: [
 							{
-								id: 1,
+								id: "id1",
 								name: "name2",
 								type: "type2",
 								value: "bar",
@@ -68,7 +68,7 @@ describe("forms.service", () => {
 				query: {
 					filters: JSON.stringify([
 						{
-							id: 1,
+							id: "id1",
 							value: "bar",
 							condition: "equals",
 						},
@@ -81,7 +81,7 @@ describe("forms.service", () => {
 					{
 						questions: [
 							{
-								id: 1,
+								id: "id1",
 								name: "name2",
 								type: "type2",
 								value: "bar",
@@ -100,13 +100,13 @@ describe("forms.service", () => {
 			const response = {
 				questions: [
 					{
-						id: 1,
+						id: "id1",
 						name: "name",
 						type: "type",
 						value: "foo",
 					},
 					{
-						id: 2,
+						id: "id2",
 						name: "name2",
 						type: "type2",
 						value: "foo2",
@@ -115,8 +115,8 @@ describe("forms.service", () => {
 			};
 
 			const filtersMap = {
-				2: {
-					id: 2,
+				id2: {
+					id: "id2",
 					value: "foo2",
 					condition: "equals",
 				},
@@ -131,13 +131,13 @@ describe("forms.service", () => {
 			const response = {
 				questions: [
 					{
-						id: 1,
+						id: "id1",
 						name: "name",
 						type: "type",
 						value: "foo",
 					},
 					{
-						id: 2,
+						id: "id2",
 						name: "name2",
 						type: "type2",
 						value: "foo2",
@@ -146,13 +146,13 @@ describe("forms.service", () => {
 			};
 
 			const filtersMap = {
-				1: {
-					id: 1,
+				id1: {
+					id: "id1",
 					value: "foo",
 					condition: "equals",
 				},
-				2: {
-					id: 2,
+				id2: {
+					id: "id2",
 					value: "foo2",
 					condition: "equals",
 				},
@@ -167,7 +167,7 @@ describe("forms.service", () => {
 			const response = {
 				questions: [
 					{
-						id: 1,
+						id: "id1",
 						name: "name",
 						type: "type",
 						value: "foo",
@@ -176,8 +176,8 @@ describe("forms.service", () => {
 			};
 
 			const filtersMap = {
-				1: {
-					id: 1,
+				id1: {
+					id: "id1",
 					value: "bar",
 					condition: "equals",
 				},
@@ -192,13 +192,13 @@ describe("forms.service", () => {
 			const response = {
 				questions: [
 					{
-						id: 1,
+						id: "id1",
 						name: "name",
 						type: "type",
 						value: "foo",
 					},
 					{
-						id: 2,
+						id: "id2",
 						name: "name2",
 						type: "type2",
 						value: "foo2",
@@ -207,13 +207,13 @@ describe("forms.service", () => {
 			};
 
 			const filtersMap = {
-				1: {
-					id: 1,
+				id1: {
+					id: "id1",
 					value: "foo",
 					condition: "equals",
 				},
-				2: {
-					id: 2,
+				id2: {
+					id: "id2",
 					value: "bar",
 					condition: "equals",
 				},
