@@ -45,6 +45,8 @@ export const filterResponses = ({
 	response: FormResponse;
 	filtersMap: FilterMap;
 }): boolean => {
+	// Check if there is at least one question id that matches a filter id.
+	// If not, the FormResponse does not pass the filter.
 	const questionIds = response.questions.map((question) => question.id);
 	const filterIds = Object.keys(filtersMap);
 	const hasValidFilterId = filterIds.some((filterId) =>
@@ -55,9 +57,11 @@ export const filterResponses = ({
 		return false;
 	}
 
+	// If the filter is applicable, loop through questions to compare its value against the filter
 	for (const question of response.questions) {
 		const filter = filtersMap[question.id];
 
+		// Continue to the next question if the filter is not applicable to the current question
 		if (!filter) {
 			continue;
 		}
@@ -71,10 +75,14 @@ export const filterResponses = ({
 			operation: filter.condition,
 		});
 
+		// If the question does not pass the filter immediately return false for this FormResponse
 		if (!comparison) {
 			return false;
 		}
+
+		// Else, if it does pass the filter we continue to checking the next question since ALL filters must pass
 	}
 
+	// The FormResponse passes the filter once all questions are compared against all filters
 	return true;
 };
