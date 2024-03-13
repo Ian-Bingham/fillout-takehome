@@ -38,7 +38,7 @@ export const getFilteredResponses = async ({
 	};
 };
 
-const filterResponses = ({
+export const filterResponses = ({
 	response,
 	filtersMap,
 }: {
